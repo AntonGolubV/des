@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            width: 100vw;
+            height: 100vh;
+        }
+        .underBlock{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            text-align: center;
+            padding: 10px auto;
+            position: absolute;
+        }
+        .img1{
+            width: 100%;
+            height: 60%;
+            background: url(img/img1.jpg) no-repeat left top /cover;
+        }
+        .img2{
+            width: 100%;
+            height: 60%;
+            background: url(img/img2.jpg);
+        }
+        .img3{
+            width: 100%;
+            height: 60%;
+            background: url(img/img3.jpg);
+        }
+    </style>
+</head>
+<body> 
+
+    <script>
+        
+
+        function Block(img, text){ 
+            let el = document.createElement('div');
+            this.el = el; 
+            this.el.style.position = 'absolute';    
+            this.img = img;
+            this.el.style.background = `url(${this.img}) no-repeat left top /cover`;
+            let underBlock = document.createElement('div');
+            this.underBlock = underBlock;
+            this.underBlock.classList.add('underBlock');
+            this.underBlock.innerText = text;
+            document.body.append(this.el); 
+            document.body.append(this.underBlock);     
+        }
+        Block.prototype.setWidth = function(x){
+            this.el.style.width = x; 
+            this.el.style.height =  '300px'; 
+            this.underBlock.style.width = x;
+            this.underBlock.style.height =  '100px';
+        }
+        Block.prototype.setPosition = function(coordX, coordY){
+                this.el.style.top = `${coordY}px`;
+                this.el.style.left = `${coordX}px`;
+                this.underBlock.style.top = `${coordY+300}px`;
+                this.underBlock.style.left = `${coordX}px`;
+            }
+        let block1 = new Block('img/img1.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, non.');
+        block1.setWidth('30vw');
+        block1.setPosition(540, 150);
+
+        function Block1(img,text){
+            let el = document.createElement('div');
+            this.el = el; 
+            this.img = img;
+            this.el.style.background = `url(${this.img}) no-repeat left top /cover`;
+            let underBlock = document.createElement('div');
+            this.underBlock = underBlock;
+            this.underBlock.innerText = text;
+            document.body.append(this.el); 
+            document.body.append(this.underBlock); 
+            this.setWidth = function(x){
+                this.el.style.width = x; 
+                this.el.style.height =  '300px'; 
+                this.underBlock.style.width = x;
+                this.underBlock.style.height =  '100px';
+            }
+            this.setPosition= function(coordX, coordY){
+                this.el.style.top = `${coordY}px`; 
+                this.el.style.left = `${coordX}px`; 
+                this.underBlock.style.left = `${coordX}px`;
+                this.underBlock.style.top = `${coordY+300}px`;
+            }    
+        }
+        let block2 = new Block('img/img2.jpg', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, non.');
+        block2.setWidth('30vw');
+        block2.setPosition(100,200);
+        
+    </script>
+</body>
